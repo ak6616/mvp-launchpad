@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Subscriber {
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique @db.VarChar(255)
+  name         String?  @db.VarChar(255)
+  source       String?  @db.VarChar(100)
+  ipAddress    String?  @map("ip_address")
+  userAgent    String?  @map("user_agent")
+  confirmed    Boolean  @default(false)
+  confirmToken String?  @map("confirm_token") @db.VarChar(255)
+  position     Int      @default(autoincrement())
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@index([email])
+  @@index([createdAt])
+  @@map("subscribers")
+}
+
+model AnalyticsEvent {
+  id          String   @id @default(uuid()) @db.Uuid
+  eventType   String   @map("event_type") @db.VarChar(50)
+  sessionId   String?  @map("session_id") @db.VarChar(255)
+  referrer    String?
+  utmSource   String?  @map("utm_source") @db.VarChar(100)
+  utmMedium   String?  @map("utm_medium") @db.VarChar(100)
+  utmCampaign String?  @map("utm_campaign") @db.VarChar(100)
+  metadata    Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([eventType])
+  @@index([createdAt])
+  @@map("analytics_events")
+}
+
+model AdminUser {
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique @db.VarChar(255)
+  passwordHash String   @map("password_hash") @db.VarChar(255)
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("admin_users")
+}
