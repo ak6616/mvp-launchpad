@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Providers from "./providers";
 import DemoModeBanner from "@/components/demo-mode-banner";
 
 const geistSans = localFont({
@@ -31,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950 text-zinc-50`}
       >
-        <Providers>{children}</Providers>
+        {children}
       <DemoModeBanner />
       </body>
     </html>
