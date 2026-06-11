@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import {
   Sparkles,
   Mail,
-  LayoutDashboard,
   BarChart3,
   Globe,
   Users,
@@ -22,12 +21,6 @@ const features = [
     title: "Email Waitlist Capture",
     description:
       "Collect and manage signups with built-in double opt-in.",
-  },
-  {
-    icon: LayoutDashboard,
-    title: "Admin Dashboard",
-    description:
-      "Manage your list, segment users, export CSV anytime.",
   },
   {
     icon: BarChart3,

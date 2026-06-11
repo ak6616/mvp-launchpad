@@ -11,7 +11,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: "The admin panel and analytics are exactly what we needed. No more spreadsheets!",
+    quote: "The analytics and conversion tracking are exactly what we needed. No more spreadsheets!",
     name: "Marcus Johnson",
     title: "Founder, DataFlow",
     rating: 5,
